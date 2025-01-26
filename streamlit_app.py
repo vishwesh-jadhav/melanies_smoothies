@@ -67,11 +67,18 @@ session = cnx.session()
 # Fetch data from Snowflake table and convert to Pandas DataFrame
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'), col('SEARCH_ON')).to_pandas()
 
-# Display the table
-st.dataframe(data=my_dataframe, use_container_width=True)
+#  Display the table
+# st.dataframe(data=my_dataframe, use_container_width=True)
+#  Stop execution here to verify the table
+# st.stop()
+
+# Correctly assign the Pandas DataFrame
+pd_df = my_dataframe  # Since `my_dataframe` is already converted to Pandas earlier
+st.dataframe(pd_df, use_container_width=True)
 
 # Stop execution here to verify the table
 st.stop()
+
 
 # Multiselect for ingredients
 ingredients_list = st.multiselect(
