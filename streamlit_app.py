@@ -48,6 +48,7 @@
 
 # smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
 # sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)  
+
 import streamlit as st
 from snowflake.snowpark.functions import col
 import requests
@@ -67,7 +68,7 @@ session = cnx.session()
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'), col('SEARCH_ON')).to_pandas()
 
 # Display the table
-st.dataframe(my_dataframe, use_container_width=True)
+st.dataframe(data=my_dataframe, use_container_width=True)
 
 # Stop execution here to verify the table
 st.stop()
@@ -108,6 +109,10 @@ smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/wa
 
 # Check if the request was successful
 if smoothiefroot_response.status_code == 200:
-    # Parse API response to DataFrame
+    # Display API response as a DataFrame
     api_data = smoothiefroot_response.json()
-    if
+    st.dataframe(data=api_data, use_container_width=True)
+else:
+    st.error("Failed to fetch data from SmoothieFroot API")
+
+
