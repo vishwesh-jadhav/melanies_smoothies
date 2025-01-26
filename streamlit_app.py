@@ -77,7 +77,6 @@ pd_df = my_dataframe  # Since `my_dataframe` is already converted to Pandas earl
 st.dataframe(pd_df, use_container_width=True)
 
 # Stop execution here to verify the table
-st.stop()
 
 
 # Multiselect for ingredients
