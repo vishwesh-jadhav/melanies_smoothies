@@ -67,13 +67,9 @@ session = cnx.session()
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'), col('SEARCH_ON')).to_pandas()
 
 # Display the table
-# st.dataframe(data=my_dataframe, use_container_width=True)
+st.dataframe(my_dataframe, use_container_width=True)
 
-# # Stop execution here to verify the table
-# st.stop()
-
-pd_df=my=dataframe.to_pandas()
-st.dataframe(pd_df)
+# Stop execution here to verify the table
 st.stop()
 
 # Multiselect for ingredients
@@ -112,9 +108,6 @@ smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/wa
 
 # Check if the request was successful
 if smoothiefroot_response.status_code == 200:
-    # Display API response as a DataFrame
+    # Parse API response to DataFrame
     api_data = smoothiefroot_response.json()
-    st.dataframe(data=api_data, use_container_width=True)
-else:
-    st.error("Failed to fetch data from SmoothieFroot API")
-
+    if
