@@ -25,6 +25,7 @@ ingredients_list = st.multiselect(
 # If ingredients are selected, display them and construct the insert statement
 if ingredients_list:
     ingredients_string = ' '.join(ingredients_list)
+    st.subheader(fruit_chosen + 'Nutrition Information')
     st.write(ingredients_string)
     
     my_insert_stmt = f""" 
